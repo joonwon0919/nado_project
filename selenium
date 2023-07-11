@@ -1,0 +1,30 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By 
+from selenium.webdriver.common.keys import Keys
+import time
+browser = webdriver.Chrome()
+
+browser.maximize_window()
+
+url1= "https://www.naver.com/"
+browser.get(url1)
+
+browser.find_element(By.ID,'query').send_keys('서울 날씨')
+browser.find_element(By.ID,'query').send_keys(Keys.ENTER)
+
+a = browser.find_element(By.CLASS_NAME,'temperature_text').text
+
+b = browser.find_element(By.CLASS_NAME,'summary').text
+
+print(a)
+print(b)
+
+browser.find_element(By.ID,'nx_query').clear()
+browser.find_element(By.ID,'nx_query').send_keys('네이버 뉴스')
+browser.find_element(By.ID,'nx_query').send_keys(Keys.ENTER)
+
+browser.find_element(By.LINK_TEXT,'네이버 뉴스').send_keys(Keys.ENTER)
+time.sleep(3)
+browser.find_element(By.CLASS_NAME,'class="cjs_news_a _cds_link _editn_link"').get_attribute('href')
+
+input() 
