@@ -12,9 +12,9 @@ browser.get(url1)
 browser.find_element(By.ID,'query').send_keys('서울 날씨')
 browser.find_element(By.ID,'query').send_keys(Keys.ENTER)
 
-a = browser.find_element(By.CLASS_NAME,'temperature_text').text
+a = browser.find_element(By.CLASS_NAME,'temperature_text').text.replace('\n',' ')
 
-b = browser.find_element(By.CLASS_NAME,'summary').text
+b = browser.find_element(By.CLASS_NAME,'summary').text.replace('\n',' ')
 
 print(a)
 print(b)
